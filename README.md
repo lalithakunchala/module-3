@@ -5,7 +5,7 @@
 
 ![](https://raw.githubusercontent.com/lalithakunchala/module-3/master/Github%20Jobs.png)
 
-### Tetack
+### Tech Stack
 
 1. React
 2. Bootstrap
