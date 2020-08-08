@@ -2,9 +2,9 @@
 
 ## Clone of GitHub Jobs
 
-![]()
+![](https://raw.githubusercontent.com/lalithakunchala/module-3/master/Github%20Jobs.png)
 
-##Instructions
+## Instructions
 
 ```
 git clone https://github.com/lalithakunchala/module-3.git
