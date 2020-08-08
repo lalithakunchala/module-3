@@ -61,6 +61,21 @@ class App extends React.Component{
               
        }
 
+       componentDidMount(){
+        const requestParam = {
+          method: 'get',
+          url: 'https://jobs.github.com/positions.json?search=node',
+          
+        }
+        axios(requestParam)
+        .then(response => {
+          this.setState({data:response.data})
+          console.log(response)
+        })
+        .catch(err => console.log(err));
+        
+       }
+
   render(){
 
 
