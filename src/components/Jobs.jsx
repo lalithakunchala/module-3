@@ -16,7 +16,7 @@ const Jobs = (props)=>{
                                         </div>
                                             <div class="media-body col-9 " style={{width:"500px"}}>
                                                 <h5 class="mt-0 mb-1">{props.data.title}</h5>
-                                                <p>{props.data.company}<span>{props.data.type}</span></p>
+                                                <p>{props.data.company} <span class="text-success"> {props.data.type}</span></p>
                                             <div>{props.data.location}{props.data.created_at}</div>
                                     </div>
                                  </div>
@@ -29,16 +29,3 @@ const Jobs = (props)=>{
 }
 
 export default Jobs
-
-// <li class="media">
-                    //     <div class="row">
-                    //         <div class="imageHeight col2">
-                    //         <img src={props.data.company_logo} class="img-fluid mr-3"  alt={props.company}/>
-                    //         </div>
-                    //             <div class="media-body">
-                    //             <h5 class="mt-0 mb-1">{props.data.title}</h5>
-                    //             <p>{props.data.company}<span>{props.data.type}</span></p>
-                    //             <div>{props.data.location}{props.data.created_at}</div>
-                    //     </div>
-                    //     </div>
-                    // </li>

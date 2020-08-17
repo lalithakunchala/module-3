@@ -61,6 +61,36 @@ class App extends React.Component{
               
        }
 
+       handleAll = ()=>{
+
+        const requestParam = {
+            method: 'get',
+            url: `https://jobs.github.com/positions.json?search=${this.state.skill}`,
+            
+          }
+          axios(requestParam)
+          .then(response => {
+            this.setState({data:response.data})
+            console.log(response)
+          })
+          .catch(err => console.log(err));
+    }
+
+    handleFull = ()=>{
+
+        const requestParam = {
+            method: 'get',
+            url: `https://jobs.github.com/positions.json?search=${this.state.skill}&&full_time=true`,
+            
+          }
+          axios(requestParam)
+          .then(response => {
+            this.setState({data:response.data})
+            console.log(response)
+          })
+          .catch(err => console.log(err));
+    }
+
        componentDidMount(){
         const requestParam = {
           method: 'get',
@@ -95,7 +125,7 @@ class App extends React.Component{
     else
     return(
       <div>
-       <Navigation />
+       <Navigation handleAll={this.handleAll} handleFull={this.handleFull}/>
        <label className="h6 mt-5">Find A Job at GitHub Job Site</label>
             <nav className="navbar navbar-light bg-light">
             <form className="form-inline">

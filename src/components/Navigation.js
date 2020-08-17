@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios'
 
 class Navigation extends React.Component{
     constructor(props){
@@ -7,6 +8,40 @@ class Navigation extends React.Component{
 
         }
     }
+
+    handleAll = ()=>{
+
+        const requestParam = {
+            method: 'get',
+            url: 'https://jobs.github.com/positions.json?search=java',
+            
+          }
+          axios(requestParam)
+          .then(response => {
+            this.setState({data:response.data})
+            console.log(response)
+          })
+          .catch(err => console.log(err));
+    }
+
+    handleFull = ()=>{
+
+        const requestParam = {
+            method: 'get',
+            url: 'https://jobs.github.com/positions.json?search=python&&full_time=true',
+            
+          }
+          axios(requestParam)
+          .then(response => {
+            this.setState({data:response.data})
+            console.log(response)
+          })
+          .catch(err => console.log(err));
+    }
+
+    
+
+
     render(){
         
         return(
@@ -19,13 +54,11 @@ class Navigation extends React.Component{
                 </a>
                 <ul className="nav justify-content-center">
                     <li className="nav-item">
-                        <a className="nav-link active" href="#">AllJobs</a>
+                        <div onClick={this.props.handleAll}><a className="nav-link active" href="#">AllJobs</a></div>
                     </li>
+                    
                     <li className="nav-item">
-                        <a className="nav-link" href="#">PartTime</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">FullTime</a>
+                        <div  onClick={this.props.handleFull}><a className="nav-link" href="#">FullTime</a></div>
                     </li>
                     
                 </ul>
