@@ -55,7 +55,7 @@ class App extends React.Component{
         axios(requestParam)
             .then(response => {
               this.setState({data:response.data})
-              console.log(response)
+              // console.log(response)
             })
             .catch(err => console.log(err));
               
@@ -63,30 +63,36 @@ class App extends React.Component{
 
        handleAll = ()=>{
 
+        console.log(this.state.skill,this.state.location)
         const requestParam = {
             method: 'get',
-            url: `https://jobs.github.com/positions.json?search=${this.state.skill}`,
-            
+            url: `https://jobs.github.com/positions.json?`,
+            params : {
+              search :this.state.skill        
+              }
           }
           axios(requestParam)
           .then(response => {
             this.setState({data:response.data})
-            console.log(response)
+            // console.log(response)
           })
           .catch(err => console.log(err));
     }
 
     handleFull = ()=>{
-
+      console.log(this.state.skill,this.state.location)
         const requestParam = {
             method: 'get',
-            url: `https://jobs.github.com/positions.json?search=${this.state.skill}&&full_time=true`,
-            
+            url: `https://jobs.github.com/positions.json? full_time=true`,
+            params : {
+              search :this.state.skill,
+                location : this.state.location         
+              }
           }
           axios(requestParam)
           .then(response => {
             this.setState({data:response.data})
-            console.log(response)
+            // console.log(response)
           })
           .catch(err => console.log(err));
     }
@@ -100,7 +106,7 @@ class App extends React.Component{
         axios(requestParam)
         .then(response => {
           this.setState({data:response.data})
-          console.log(response)
+          // console.log(response)
         })
         .catch(err => console.log(err));
         
@@ -141,6 +147,23 @@ class App extends React.Component{
                       ))
 
                     }
+            <div class="w-50 float-right">
+            <nav aria-label="Page navigation example ">
+              <ul class="pagination">
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+            </div>
           </div>
               
       );

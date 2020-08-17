@@ -3,7 +3,7 @@ import Styles from './Styles.module.css';
 
 const Jobs = (props)=>{
 
-    console.log(props.data.company_url);
+    // console.log(props.data.company_url);
 
     return (
                 <ul>
