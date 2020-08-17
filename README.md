@@ -1,10 +1,16 @@
-
+ 
 
 ## Clone of GitHub Jobs
 
-![]()
 
-##Instructions
+![](https://raw.githubusercontent.com/lalithakunchala/module-3/master/Github%20Jobs.png)
+
+### Tech Stack
+
+1. React
+2. Bootstrap
+
+## Instructions
 
 ```
 git clone https://github.com/lalithakunchala/module-3.git
@@ -12,6 +18,8 @@ git clone https://github.com/lalithakunchala/module-3.git
 cd module-3
 
 npm install 
+
+npm install react-router-dom react-redux axios
 
 ```
 
