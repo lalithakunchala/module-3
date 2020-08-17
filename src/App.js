@@ -14,7 +14,8 @@ class App extends React.Component{
         skill:"",
         location:"",
         fulltime:"",
-        data:[]
+        data:[],
+        pageNo:1
       };
     }
 
@@ -64,6 +65,11 @@ class App extends React.Component{
        handleAll = ()=>{
 
         console.log(this.state.skill,this.state.location)
+        this.setState({
+          skill:"",
+          location:"",
+          pageNo:1
+        })
         const requestParam = {
             method: 'get',
             url: `https://jobs.github.com/positions.json?`,
@@ -95,6 +101,59 @@ class App extends React.Component{
             // console.log(response)
           })
           .catch(err => console.log(err));
+    }
+
+    handlePageNo = (e)=>{
+        console.log(e.target.value)
+        if(e.target.value == "prev"){
+          console.log("prev")
+          if(this.state.pageNo>1){
+            this.setState({
+              pageNo:this.state.pageNo-1
+            })
+            const requestParam = {
+              method: 'get',
+              url: 'https://jobs.github.com/positions.json?search=node',
+              params : {
+                search :this.state.skill,
+                  location : this.state.location,
+                  page : this.state.pageNo-1         
+                }
+            }
+            //console.log(requestParam);
+            axios(requestParam)
+                .then(response => {
+                  this.setState({data:response.data})
+                  // console.log(response)
+                })
+                .catch(err => console.log(err));
+          }
+        }
+        else if(e.target.value =="next"){
+          console.log("next")
+          if(this.state.pageNo<4){
+          this.setState({
+            pageNo:this.state.pageNo+1
+          })
+
+          const requestParam = {
+            method: 'get',
+            url: 'https://jobs.github.com/positions.json?search=node',
+            params : {
+              search :this.state.skill,
+                location : this.state.location,
+                page : this.state.pageNo+1         
+              }
+          }
+          //console.log(requestParam);
+          axios(requestParam)
+              .then(response => {
+                this.setState({data:response.data})
+                // console.log(response)
+              })
+              .catch(err => console.log(err));
+        }
+      }
     }
 
        componentDidMount(){
@@ -147,19 +206,17 @@ class App extends React.Component{
                       ))
 
                     }
-            <div class="w-50 float-right">
+            <div class="w-50  fixed-bottom float-right">
             <nav aria-label="Page navigation example ">
               <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
+                <li value="prev"  class="page-item">
+                  <button value="prev" onClick={this.handlePageNo} class="page-link">
+                    prev
+                  </button>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
+                  <li value="prev"  class="page-item"><div  class="page-link" >{this.state.pageNo}</div></li>
+                <li value="prev"  class="page-item">
+                  <button value="next" onClick={this.handlePageNo} class="page-link">Next</button>
                 </li>
               </ul>
             </nav>
